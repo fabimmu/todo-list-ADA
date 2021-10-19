@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { getUsers } from "../../api";
+import {Header} from "../Dashboard/Layout/Header"
+
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -16,6 +18,8 @@ const Users = () => {
   console.log(users);
 
   return (
+    <>
+    <Header/>
     <div>
       <table>
         <thead>
@@ -40,6 +44,7 @@ const Users = () => {
         </tbody>
       </table>
     </div>
+    </>
   );
 };
 

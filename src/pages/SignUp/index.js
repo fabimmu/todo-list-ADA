@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import {signup} from './api';
+import {Header} from "../Dashboard/Layout/Header"
+
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +14,8 @@ const SignUp = () => {
     signup({email, password, name, gender});
   };
   return (
+    <>
+    <Header/>
     <div>
       <form action="" onSubmit={handleSubmit}>
         <div className="field">
@@ -80,6 +84,7 @@ const SignUp = () => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 

@@ -1,5 +1,7 @@
-import {getTasks} from './api/tasks';
+import { getTasks } from "./api/tasks";
 import { useState } from "react";
+import {Layout} from "../Dashboard/index"
+
 
 const TasksList = () => {
   const [tasks, setTask] = useState([]);
@@ -7,27 +9,27 @@ const TasksList = () => {
   const obtenerTasks = async () => {
     const response = await getTasks();
     setTask(response);
-    console.log(tasks);
   };
 
   if (!tasks.length) {
     obtenerTasks();
   }
 
-  console.log(tasks);
-
   return (
-    <div className="box is-info mt-4">
-          {tasks?.map((task) => {
-            return (
-                <div>
-                <p>{task.task}</p>
-                <p>{task.description}</p>
-                <p>{task.status}</p>
-             </div>
-            );
-          })}
-      
+    <div>
+      {tasks?.map((task) => {
+        return (
+              <div className="box">
+                <p className="title">
+                  {task.task}{" "}
+                  <span className="tag is-warning">{task.status}</span>
+                </p>
+                <p className="subtitle">{task.description}</p>
+              </div>
+              
+          
+        );
+      })}
     </div>
   );
 };
